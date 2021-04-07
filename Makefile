@@ -2,7 +2,7 @@
 CC=gcc
 CFLAGS=-I.
 BUILD = src/main.c src/jlib.c
-LIBS = -lmysqlclient -lncurses -lmenu -lm
+LIBS = -lmysqlclient -ltinfo -lncurses -lmenu -lm
 DEPS = src/pass.h src/jlib.h
 
 %.o: %.c $(DEPS)
