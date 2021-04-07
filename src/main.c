@@ -2578,12 +2578,22 @@ void run_db_interact(MYSQL *con) {
 								case KEY_m:
 									// go to modify table state
 									break;
+								case KEY_PPAGE:
+								case KEY_NPAGE:
 								case KEY_UP:
 								case KEY_DOWN:
 									if (key == KEY_UP)
 										tbl_index = (tbl_index - 1) % tbl_count;
 									if (key == KEY_DOWN)
 										tbl_index = (tbl_index + 1) % tbl_count;
+									if (key == KEY_PPAGE)
+									    tbl_index = (tbl_index - tbl_render_h);
+									if (key == KEY_NPAGE) {
+									    tbl_index = (tbl_index + tbl_render_h);
+			                            if (tbl_index > tbl_count) {
+			                                tbl_index = 0;
+			                            }
+			                        }
 									if (tbl_index < 0)
 										tbl_index = tbl_count + tbl_index;
 									break;
